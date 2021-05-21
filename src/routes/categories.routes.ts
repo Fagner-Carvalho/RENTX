@@ -8,23 +8,23 @@ import { listCategoriesController } from "../modules/cars/useCases/listCategorie
 const categoriesRountes = Router();
 
 const upload = multer({
-    dest: "./tmp",
+  dest: "./tmp",
 });
 
 categoriesRountes.post("/", (request, response) => {
-    return createCategoryController.handle(request, response);
+  return createCategoryController.handle(request, response);
 });
 
 categoriesRountes.get("/", (request, response) => {
-    return listCategoriesController.handle(request, response);
+  return listCategoriesController.handle(request, response);
 });
 
 categoriesRountes.post(
-    "/import",
-    upload.single("file"),
-    (request, response) => {
-        return importCategoryController.handle(request, response);
-    }
+  "/import",
+  upload.single("file"),
+  (request, response) => {
+    return importCategoryController.handle(request, response);
+  }
 );
 
 export { categoriesRountes };
